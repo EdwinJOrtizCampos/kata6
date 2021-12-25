@@ -1,6 +1,7 @@
 
 import java.util.Scanner;
 import toys.Car;
+import toys.Helicopter;
 import toys.SerialNumberGenerator;
 
 /*
@@ -30,11 +31,19 @@ public class Main {
                     System.out.println("Saliendo del sistema\n");
                     System.exit(0);
                     break;
-                default:
+                case "car":
                     Car coche = new Car(generator.next());
                     coche.pack();
                     coche.label();
                     break;
+                case "helicopter":
+                    Helicopter helicopter = new Helicopter(generator.next(), "classic");
+                    helicopter.pack();
+                    helicopter.label();
+                    break;
+                default:
+                    System.out.println("Command unknown!\n");
+                    
             }
         }
     }
