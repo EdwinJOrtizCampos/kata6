@@ -5,25 +5,34 @@
  */
 package toys;
 
+import toyproducts.Toy;
+import toyproducts.models.CarToy;
+import toyproducts.models.HelicopterToy;
+
 /**
  *
  * @author edwin
  */
 public class ToyBusiness {
-    public SerialNumberGenerator generator;
+    private final SerialNumberGenerator generator = new SerialNumberGenerator();
     
     
-    public Car createCar(){
-        Car coche = new Car(generator.next());
-        coche.pack();
-        coche.label();
-        return coche;
-    }
-    
-    public Helicopter createHelicopter(){
-        Helicopter helicoptero = new Helicopter(generator.next(), "classic");
-        helicoptero.pack();
-        helicoptero.label();
-        return helicoptero;
+    public Toy createToy(String tipo){
+        Toy toy;
+        switch(tipo){
+            case "coche":
+                toy = new CarToy(generator.next());
+                toy.pack();
+                toy.label();
+                return toy;
+                
+                
+            case "helicopter":
+                toy = new HelicopterToy(generator.next(), "classic");
+                toy.pack();
+                toy.label();
+                return toy;
+        }
+        return toy = new CarToy(generator.next());
     }
 }
