@@ -1,8 +1,8 @@
 
+import branches.AmericanToyBusiness;
+import branches.AsianToyBusiness;
 import java.util.Scanner;
-import toys.Car;
-import toys.Helicopter;
-import toys.SerialNumberGenerator;
+import business.ToyBusiness;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,7 +20,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SerialNumberGenerator generator  = new SerialNumberGenerator();
+        ToyBusiness americanToyBusiness = new AmericanToyBusiness();
+        ToyBusiness asianToyBusiness = new AsianToyBusiness();
         Scanner sc = new Scanner(System.in);
         while(true){
             System.out.print("Introducir comando: ");
@@ -31,15 +32,17 @@ public class Main {
                     System.out.println("Saliendo del sistema\n");
                     System.exit(0);
                     break;
-                case "car":
-                    Car coche = new Car(generator.next());
-                    coche.pack();
-                    coche.label();
+                case "asiancar":
+                    asianToyBusiness.createToy("car");
                     break;
-                case "helicopter":
-                    Helicopter helicopter = new Helicopter(generator.next(), "classic");
-                    helicopter.pack();
-                    helicopter.label();
+                case "asianhelicopter":
+                    asianToyBusiness.createToy("helicopter");
+                    break;
+                case "americancar":
+                    americanToyBusiness.createToy("car");
+                    break;
+                case "americanhelicopter":
+                    americanToyBusiness.createToy("helicopter");
                     break;
                 default:
                     System.out.println("Command unknown!\n");
